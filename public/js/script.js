@@ -67,10 +67,10 @@ $("#send").click(function() {
 });
 
 $("#registerBtn").click(function() {
-	thisUser = $("#registeras").val();
-	console.log($("#registeras").val());
-    if($("#registeras").val() != "ref") {
-        socket.emit('register', { user: $("#registeras").val()});
+	thisUser = $("#registeras option:selected").val();
+	console.log(thisUser);
+    if(thisUser != "ref") {
+        socket.emit('register', { user: thisUser});
     }
 });
 
