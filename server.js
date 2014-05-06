@@ -40,13 +40,14 @@ io.sockets.on('connection', function (socket) {
     socket.on('buzz', function (data) {
     	if (!buzzStatus) {
     		buzzStatus = true;
-    		io.sockets.emit('buzz_update', {user: data.user});
+    		io.sockets.emit('buzz_update', {user: data.user, reset: false});
     	}
     });
     
     socket.on('reset', function (data) {
     	console.log('reset');
     	buzzStatus = false;
+    	io.sockets.emit('buzz_update', {user: data.user, reset: true});
     });
     
     socket.on('disconnect', function () {

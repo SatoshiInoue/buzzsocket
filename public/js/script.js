@@ -42,12 +42,18 @@ socket.on('status_update', function (data) {
 
 socket.on('buzz_update', function (data) {
 	console.log(data);
-    if(data.user == "p1") {
-    	$("#p1buzz").html("O");
-    } else if (data.user == "p2") {
-    	$("#p2buzz").html("O");
-    } else if (data.user == "p3") {
-    	$("#p3buzz").html("O");
+	if (data.reset == true) {
+		$("#p1buzz").html("X");
+		$("#p2buzz").html("X");
+		$("#p3buzz").html("X");
+	} else {
+	    if(data.user == "p1") {
+	    	$("#p1buzz").html("O");
+	    } else if (data.user == "p2") {
+	    	$("#p2buzz").html("O");
+	    } else if (data.user == "p3") {
+	    	$("#p3buzz").html("O");
+	    }
     }
 });
  
@@ -80,10 +86,8 @@ $("#buzzBtn").click(function() {
 });
 
 $("#resetBtn").click(function() {
-	$("#p1buzz").html("X");
-	$("#p2buzz").html("X");
-	$("#p3buzz").html("X");
-	socket.emit('reset', null);
+	
+	socket.emit('reset', {user: thisUser});
     
 });
 
