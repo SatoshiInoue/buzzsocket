@@ -83,12 +83,10 @@ $("#buzzBtn").click(function() {
 });
 
 $("#resetBtn").click(function() {
-	
 	socket.emit('reset', {user: thisUser});
-    
 });
 $("#resetSessionBtn").click(function() {
-	
+	thisUser = "";
 	socket.emit('reset_session', null);
     
 });
