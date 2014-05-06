@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Node Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	
+    <script>
+// UNCOMMENT THIS CODE IF YOU USE THE "serverwithanalytics" SERVER
+//        var socket = io.connect();
+//        socket.on('connect', function () {
+//            socket.send(window.location.href);
+//        });
+//        window.onhashchange = function () {
+//            socket.send(window.location.href);
+//        }
+    </script>
+    <script src="lib/jquery-1.8.2.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Buzz Socket</h1>
+	
+	<section id="status">
+		<p>Player 1: <span id="p1status">Offline</span></p>
+		<p>Player 2: <span id="p2status">Offline</span></p>
+		<p>Player 3: <span id="p3status">Offline</span></p>
+	</section>
+	
+	<section id="dashboard">
+		<div id="p1buzz">X</div>
+		<div id="p2buzz">X</div>
+		<div id="p3buzz">X</div>
+	</section>
+	
+	<section id=register>
+		You are:
+		<select name="registeras">
+		  <option value="p1">Player 1</option>
+		  <option value="p2">Player 2</option>
+		  <option value="p3">Player 3</option>
+		  <option value="ref">Referee</option>
+		</select>
+		<button id="registerBtn">Continue</button>
+	</section>
+	
+	<section id="buzz">
+		<button id="buzzBtn">Buzz!</button>
+	</section>
+	
+	<section id="admin">
+		<button id="resetBtn">Reset</button>
+	</section>
+	
+	<!-- 
+	<section style="background-color:#AD394A; color: white ;text-align: center; float: left; width: 150px; height:auto;">
+		<h3>Right Now</h3>
+		<p id="connections" style="font-size: 30px;">0</p>
+		<h5>active visitors</h5>
+   </section>
+	
+	<section style="padding:10px;background-color:#DC4857;color: white ;text-align:left; float: left; width: 300px; height: auto;">
+		<ul id="messages">
+		</ul>
+		You are...<input type="text" id="name"/><br/>
+		<input type="text" id="new-message"/>
+		<button id="send">SEND</button>
+	</section>
+ 	-->
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
