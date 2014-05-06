@@ -11,23 +11,13 @@ socket.on('connect', function () {
 
 socket.on('message', function (data) {
 	console.log(data.message);
-    if(data.message) {
-        //messages.push(data);
-    	numOfMsg++;
-    	if (numOfMsg%2 != 0)
-    		style = "bgDark";
-    	else
-    		style = "bgLight";
-    	
-        if (data.systemMsg) {
-        	$("#messages").append("<li class=\"" + style + "\">" + data.message + "</li>");
-        } else {
-        	$("#messages").append("<li class=\"" + style + "\">" + data.username + " said: " + data.message + "</li>");
-        }
-    } else {
-        console.log("Problem occured:", data);
-	}
-});
+    if (data.p1 == true)
+    	$("#p1status").html("Online");
+    if (data.p2 == true)
+    	$("#p2status").html("Online");
+    if (data.p3 == true)
+    	$("#p3status").html("Online");
+}); 
 
 socket.on('status_update', function (data) {
 	console.log(data);

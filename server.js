@@ -23,9 +23,13 @@ io.configure(function () {
 	  io.set("polling duration", 10); 
 });
 
+var p1status = false;
+var p2status = false;
+var p3status = false;
 var buzzStatus = false;
+
 io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: 'Welcome to the chat', systemMsg: true});
+    socket.emit('message', { message: 'Welcome to the chat', systemMsg: true, p1:p1status, p2: p2status, p3:p3status});
     
     socket.emit('pageview', { 'connections': Object.keys(io.connected).length});
     
@@ -34,6 +38,13 @@ io.sockets.on('connection', function (socket) {
     });
     
     socket.on('register', function (data) {
+    	if (data.user == "p1")
+    		p1status = true;
+    	else if (data.user == "p2")
+    		p2status = true;
+    	else if (data.user == "p3")
+    		p3status = true;
+    	
         io.sockets.emit('status_update', {user: data.user, status: "online"});
     });
     
