@@ -87,6 +87,11 @@ $("#resetBtn").click(function() {
 	socket.emit('reset', {user: thisUser});
     
 });
+$("#resetSessionBtn").click(function() {
+	
+	socket.emit('reset_session', null);
+    
+});
 
 window.onhashchange = function () {
 	console.log("onhashchange");
