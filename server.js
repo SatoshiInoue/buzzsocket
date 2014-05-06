@@ -44,11 +44,12 @@ io.sockets.on('connection', function (socket) {
     		p2status = true;
     	else if (data.user == "p3")
     		p3status = true;
-    	
         io.sockets.emit('status_update', {user: data.user, status: "online", offline_all: false});
     });
     
     socket.on('buzz', function (data) {
+    	if (typeof data.user === "undefined" || data.user == "")
+    		return;
     	if (!buzzStatus) {
     		buzzStatus = true;
     		io.sockets.emit('buzz_update', {user: data.user, reset: false});
