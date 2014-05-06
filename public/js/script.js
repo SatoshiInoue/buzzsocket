@@ -83,7 +83,7 @@ $("#resetBtn").click(function() {
 	$("#p1buzz").html("X");
 	$("#p2buzz").html("X");
 	$("#p3buzz").html("X");
-	socket.emit('resetbuzz', null);
+	socket.emit('reset', null);
     
 });
 
