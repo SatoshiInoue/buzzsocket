@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
     	else if (data.user == "p3")
     		p3status = true;
     	
-        io.sockets.emit('status_update', {user: data.user, status: "online"});
+        io.sockets.emit('status_update', {user: data.user, status: "online", offline_all: false});
     });
     
     socket.on('buzz', function (data) {
@@ -59,6 +59,15 @@ io.sockets.on('connection', function (socket) {
     	console.log('reset');
     	buzzStatus = false;
     	io.sockets.emit('buzz_update', {user: data.user, reset: true});
+    });
+    
+    socket.on('reset_session', function (data) {
+    	console.log('reset_session');
+    	buzzStatus = false;
+    	p1status = false;
+    	p2status = false;
+    	p3status = false;
+    	io.sockets.emit('status_update', {user: null, status: null, offline_all: true});
     });
     
     socket.on('disconnect', function () {

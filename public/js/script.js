@@ -21,13 +21,20 @@ socket.on('message', function (data) {
 
 socket.on('status_update', function (data) {
 	console.log(data);
-    if(data.user == "p1") {
-    	$("#p1status").html("Online");
-    } else if (data.user == "p2") {
-    	$("#p2status").html("Online");
-    } else if (data.user == "p3") {
-    	$("#p3status").html("Online");
-    }
+	if (data.offline_all == true) {
+		$("#p1status").html("Offline");
+		$("#p2status").html("Offline");
+		$("#p3status").html("Offline");
+	} else {
+		if(data.user == "p1") {
+	    	$("#p1status").html("Online");
+	    } else if (data.user == "p2") {
+	    	$("#p2status").html("Online");
+	    } else if (data.user == "p3") {
+	    	$("#p3status").html("Online");
+	    }
+	}
+    
 });
 
 socket.on('buzz_update', function (data) {
