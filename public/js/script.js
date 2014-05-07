@@ -36,7 +36,7 @@ socket.on('status_update', function (data) {
 	if (data.user == "ref" && data.user == thisUser) {
 		$("#admin").show();
 		$("#register").hide();
-	} else {
+	} else if (data.user == thisUser) {
 		$("#buzz").show();
 		$("#register").hide();	
 	}  
