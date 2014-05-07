@@ -1,8 +1,6 @@
-//var messages = [];
 var socket = io.connect();
 var numOfMsg = 0;
 var style = "";
-
 var thisUser;
 
 socket.on('connect', function () {
@@ -89,6 +87,12 @@ $("#resetSessionBtn").click(function() {
 	thisUser = "";
 	socket.emit('reset_session', null);
     
+});
+
+$( document ).ready(function() {
+    console.log( "document loaded" );
+    $("#admin").hide();
+    $("#buzz").hide();
 });
 
 window.onhashchange = function () {
