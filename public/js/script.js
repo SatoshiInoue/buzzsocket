@@ -2,6 +2,7 @@ var socket = io.connect();
 var numOfMsg = 0;
 var style = "";
 var thisUser;
+var buzzed = false;
 
 socket.on('connect', function () {
 	console.log('Socket connected');
@@ -32,22 +33,25 @@ socket.on('status_update', function (data) {
 	    } else if (data.user == "p3") {
 	    	$("#p3status").html("Online");
 	    }
+		if (data.user == "ref" && data.user == thisUser) {
+			$("#admin").show();
+			$("#register").hide();
+		} else if (data.user == thisUser) {
+			$("#buzz").show();
+			$("#register").hide();	
+		}
 	}
-	if (data.user == "ref" && data.user == thisUser) {
-		$("#admin").show();
-		$("#register").hide();
-	} else if (data.user == thisUser) {
-		$("#buzz").show();
-		$("#register").hide();	
-	}  
+	  
 });
 
 socket.on('buzz_update', function (data) {
 	console.log(data);
 	if (data.reset == true) {
 		$("#p1buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
-		$("#p2buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');;
-		$("#p3buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');;
+		$("#p2buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
+		$("#p3buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
+		buzzed = false;
+		$("#buzzstatus").html("OK");
 	} else {
 	    if(data.user == "p1") {
 	    	$("#p1buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
@@ -56,6 +60,9 @@ socket.on('buzz_update', function (data) {
 	    } else if (data.user == "p3") {
 	    	$("#p3buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    }
+	    if (data.user == thisUser)
+	    	buzzed = true;
+	    $("#buzzstatus").html("PAUSED");
     }
 });
  
@@ -83,7 +90,10 @@ $("#registerBtn").click(function() {
 });
 
 $("#buzzBtn").click(function() {
-	socket.emit('buzz', { user: thisUser});
+	if (!buzzed) {
+		socket.emit('buzz', { user: thisUser});
+		//buzzed = true;
+	}
     
 });
 
@@ -92,6 +102,7 @@ $("#resetBtn").click(function() {
 });
 $("#resetSessionBtn").click(function() {
 	thisUser = "";
+	socket.emit('reset', {user: thisUser});
 	socket.emit('reset_session', null);
     
 });
