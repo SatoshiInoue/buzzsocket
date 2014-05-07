@@ -79,9 +79,9 @@ $("#send").click(function() {
 $("#registerBtn").click(function() {
 	thisUser = $("#registeras option:selected").val();
 	console.log(thisUser);
-    if(thisUser != "ref") {
+    //if(thisUser != "ref") {
         socket.emit('register', { user: thisUser});
-    }
+    //}
 });
 
 $("#buzzBtn").click(function() {
