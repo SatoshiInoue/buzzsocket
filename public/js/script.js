@@ -25,23 +25,21 @@ socket.on('status_update', function (data) {
 		$("#p3status").html("Offline");
 		resetView();
 	} else {
-		if (data.user == "ref") {
-			$("#admin").show();
-			$("#register").hide();
-		} else {
-			$("#buzz").show();
-			$("#register").hide();
-			
-			if(data.user == "p1") {
-		    	$("#p1status").html("Online");
-		    } else if (data.user == "p2") {
-		    	$("#p2status").html("Online");
-		    } else if (data.user == "p3") {
-		    	$("#p3status").html("Online");
-		    }
-		}
+		if(data.user == "p1") {
+	    	$("#p1status").html("Online");
+	    } else if (data.user == "p2") {
+	    	$("#p2status").html("Online");
+	    } else if (data.user == "p3") {
+	    	$("#p3status").html("Online");
+	    }
 	}
-    
+	if (data.user == "ref" && data.user == thisUser) {
+		$("#admin").show();
+		$("#register").hide();
+	} else {
+		$("#buzz").show();
+		$("#register").hide();	
+	}  
 });
 
 socket.on('buzz_update', function (data) {
