@@ -1,0 +1,39 @@
+ul#messages {
+	list-style: none;
+}
+
+.bgDark {
+	background-color:#707070;
+}
+
+.bgLightGrey {
+	background-color: #D0D0D0 ;
+}
+.bgRed {
+	background-color: #FF0000;
+}
+
+.clear {
+	clear: both;
+}
+ul#statusList {
+	list-style: none;
+}
+ul#statusList li {
+	float: left;
+	margin-right: 10px;
+	
+}
+
+.square {
+	width: 200px;
+	height: 200px;
+	margin: 10px;
+	float: left;
+}
+
+button#buzzBtn {
+	width: 100%;
+	height: 200px;
+	background-color: #FF0000 ;
+}

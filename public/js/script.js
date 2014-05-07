@@ -40,16 +40,16 @@ socket.on('status_update', function (data) {
 socket.on('buzz_update', function (data) {
 	console.log(data);
 	if (data.reset == true) {
-		$("#p1buzz").html("X");
-		$("#p2buzz").html("X");
-		$("#p3buzz").html("X");
+		$("#p1buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
+		$("#p2buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');;
+		$("#p3buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');;
 	} else {
 	    if(data.user == "p1") {
-	    	$("#p1buzz").html("O");
+	    	$("#p1buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    } else if (data.user == "p2") {
-	    	$("#p2buzz").html("O");
+	    	$("#p2buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    } else if (data.user == "p3") {
-	    	$("#p3buzz").html("O");
+	    	$("#p3buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    }
     }
 });
