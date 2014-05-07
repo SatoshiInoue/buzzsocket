@@ -89,10 +89,14 @@ $("#resetSessionBtn").click(function() {
     
 });
 
+function resetView() {
+	$("#admin").hide();
+    $("#buzz").hide();
+}
+
 $( document ).ready(function() {
     console.log( "document loaded" );
-    $("#admin").hide();
-    $("#buzz").hide();
+    resetView();
 });
 
 window.onhashchange = function () {
