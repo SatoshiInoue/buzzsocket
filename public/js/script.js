@@ -24,6 +24,7 @@ socket.on('status_update', function (data) {
 		$("#p1status").html("Offline");
 		$("#p2status").html("Offline");
 		$("#p3status").html("Offline");
+		$("#buzzstatus").html("OK");
 		resetView();
 	} else {
 		if(data.user == "p1") {
@@ -100,6 +101,7 @@ $("#buzzBtn").click(function() {
 
 $("#resumeBtn").click(function() {
 	socket.emit('resume_buzz', null);
+	$("#buzzstatus").html("OK");
 });
 $("#resetBtn").click(function() {
 	socket.emit('reset', {user: thisUser});
