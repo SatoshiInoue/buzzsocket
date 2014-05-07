@@ -97,6 +97,10 @@ $("#buzzBtn").click(function() {
     
 });
 
+
+$("#resumeBtn").click(function() {
+	socket.emit('resume_buzz', null);
+});
 $("#resetBtn").click(function() {
 	socket.emit('reset', {user: thisUser});
 });

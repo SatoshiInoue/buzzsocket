@@ -55,7 +55,9 @@ io.sockets.on('connection', function (socket) {
     		io.sockets.emit('buzz_update', {user: data.user, reset: false});
     	}
     });
-    
+    socket.on('resume_buzz', function (data) {
+    	buzzStatus = false;
+    });
     socket.on('reset', function (data) {
     	console.log('reset');
     	buzzStatus = false;
