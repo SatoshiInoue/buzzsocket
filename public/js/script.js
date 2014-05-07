@@ -23,6 +23,7 @@ socket.on('status_update', function (data) {
 		$("#p1status").html("Offline");
 		$("#p2status").html("Offline");
 		$("#p3status").html("Offline");
+		resetView();
 	} else {
 		if(data.user == "p1") {
 	    	$("#p1status").html("Online");
@@ -31,6 +32,8 @@ socket.on('status_update', function (data) {
 	    } else if (data.user == "p3") {
 	    	$("#p3status").html("Online");
 	    }
+		$("#buzz").show();
+		$("#register").hide();
 	}
     
 });
@@ -92,6 +95,7 @@ $("#resetSessionBtn").click(function() {
 function resetView() {
 	$("#admin").hide();
     $("#buzz").hide();
+    $("#register").show();
 }
 
 $( document ).ready(function() {
