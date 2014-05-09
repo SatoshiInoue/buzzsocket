@@ -31,12 +31,14 @@ ul#statusList li {
 	height: 30%;
 	margin: 10px;
 	float: left;
+	display:block;
 }
 
 button#buzzBtn {
 	width: 100%;
 	height: 200px;
-	background-color: #FF0000 ;
+	background-color: #FF0000;
+	
 }
 button#resumeBtn, button#resetBtn, button#resetSessionBtn {
 	width: 100%;
