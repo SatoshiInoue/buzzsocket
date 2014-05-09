@@ -28,7 +28,7 @@ ul#statusList li {
 
 .square {
 	width: 30%;
-	height: 30%;
+	height: 300px;
 	margin: 10px;
 	float: left;
 	display:block;
