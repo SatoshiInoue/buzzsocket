@@ -16,6 +16,8 @@ socket.on('message', function (data) {
     	$("#p2status").html("Online");
     if (data.p3 == true)
     	$("#p3status").html("Online");
+    if (data.p4 == true)
+    	$("#p4status").html("Online");
 }); 
 
 socket.on('status_update', function (data) {
@@ -24,6 +26,7 @@ socket.on('status_update', function (data) {
 		$("#p1status").html("Offline");
 		$("#p2status").html("Offline");
 		$("#p3status").html("Offline");
+		$("#p4status").html("Offline");
 		$("#buzzstatus").html("OK");
 		resetView();
 	} else {
@@ -33,6 +36,8 @@ socket.on('status_update', function (data) {
 	    	$("#p2status").html("Online");
 	    } else if (data.user == "p3") {
 	    	$("#p3status").html("Online");
+	    } else if (data.user == "p4") {
+	    	$("#p4status").html("Online");
 	    }
 		if (data.user == "ref" && data.user == thisUser) {
 			$("#admin").show();
@@ -51,6 +56,7 @@ socket.on('buzz_update', function (data) {
 		$("#p1buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
 		$("#p2buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
 		$("#p3buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
+		$("#p4buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
 		buzzed = false;
 		$("#buzzstatus").html("OK");
 	} else {
@@ -60,6 +66,8 @@ socket.on('buzz_update', function (data) {
 	    	$("#p2buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    } else if (data.user == "p3") {
 	    	$("#p3buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
+	    } else if (data.user == "p4") {
+	    	$("#p4buzz").html("O").removeClass('bgLightGrey').addClass('bgRed');
 	    }
 	    if (data.user == thisUser)
 	    	buzzed = true;

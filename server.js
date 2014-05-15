@@ -26,10 +26,11 @@ io.configure(function () {
 var p1status = false;
 var p2status = false;
 var p3status = false;
+var p4status = false;
 var buzzStatus = false;
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: 'Welcome to the chat', systemMsg: true, p1:p1status, p2: p2status, p3:p3status});
+    socket.emit('message', { message: 'Welcome to the chat', systemMsg: true, p1:p1status, p2: p2status, p3:p3status, p4:p4status});
     
     socket.emit('pageview', { 'connections': Object.keys(io.connected).length});
     
@@ -44,6 +45,8 @@ io.sockets.on('connection', function (socket) {
     		p2status = true;
     	else if (data.user == "p3")
     		p3status = true;
+    	else if (data.user == "p4")
+    		p4status = true;
         io.sockets.emit('status_update', {user: data.user, status: "online", offline_all: false});
     });
     
@@ -70,6 +73,7 @@ io.sockets.on('connection', function (socket) {
     	p1status = false;
     	p2status = false;
     	p3status = false;
+    	p4status = false;
     	io.sockets.emit('status_update', {user: null, status: null, offline_all: true});
     });
     
