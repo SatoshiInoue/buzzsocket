@@ -60,6 +60,7 @@ io.sockets.on('connection', function (socket) {
     });
     socket.on('resume_buzz', function (data) {
     	buzzStatus = false;
+    	io.sockets.emit('buzz_update', {user: null, reset: null, resume: true});
     });
     socket.on('reset', function (data) {
     	console.log('reset');

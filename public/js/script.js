@@ -52,7 +52,10 @@ socket.on('status_update', function (data) {
 
 socket.on('buzz_update', function (data) {
 	console.log(data);
-	if (data.reset == true) {
+	if (data.resume) {
+		$("#buzzstatus").html("OK");
+	}
+	else if (data.reset == true) {
 		$("#p1buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
 		$("#p2buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
 		$("#p3buzz").html("X").removeClass('bgRed').addClass('bgLightGrey');
