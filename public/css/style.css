@@ -45,6 +45,6 @@ button#resumeBtn, button#resetBtn, button#resetSessionBtn {
 	height: 50px;
 }
 
-#buzzStatus {
+#buzzstatus {
 	color: #FF0000;
 }
